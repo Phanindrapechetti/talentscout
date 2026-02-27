@@ -54,7 +54,8 @@ def get_chat_response(chat_history: list) -> str:
         messages = build_messages(chat_history)
         
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",   # Best free model on Groq
+            model="llama-3.1-8b-instant",
+           # model="llama-3.3-70b-versatile",   # Best free model on Groq
             messages=messages,
             temperature=0.7,                    # Balanced creativity vs consistency
             max_tokens=1024,                    # Enough for detailed tech questions
@@ -108,7 +109,8 @@ def analyze_sentiment(message: str) -> dict:
         prompt = SENTIMENT_PROMPT.format(message=message)
         
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="llama-3.1-8b-instant",
+            # model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "user", "content": prompt}
             ],
